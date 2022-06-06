@@ -1,0 +1,95 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".GroupView">
+
+    <TextView
+        android:id="@+id/textView3"
+        android:layout_width="109dp"
+        android:layout_height="29dp"
+        android:layout_marginTop="44dp"
+        android:text="To Each"
+        android:textAlignment="center"
+        android:textColor="#000000"
+        android:textSize="16sp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.498"
+        app:layout_constraintStart_toEndOf="@+id/textView2"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <TextView
+        android:id="@+id/textView2"
+        android:layout_width="109dp"
+        android:layout_height="29dp"
+        android:layout_marginStart="104dp"
+        android:layout_marginTop="44dp"
+        android:text="Total Amount"
+        android:textAlignment="center"
+        android:textColor="#000000"
+        android:textSize="16sp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <TextView
+        android:id="@+id/textTotalAmount"
+        android:layout_width="109dp"
+        android:layout_height="29dp"
+        android:layout_marginStart="104dp"
+        android:layout_marginTop="44dp"
+        android:text="5000"
+        android:textAlignment="center"
+        android:textColor="#000000"
+        android:textSize="16sp"
+        android:textStyle="bold"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="@+id/textView2" />
+
+    <TextView
+        android:id="@+id/textAmountToEach"
+        android:layout_width="109dp"
+        android:layout_height="29dp"
+        android:layout_marginTop="44dp"
+        android:text="5000"
+        android:textAlignment="center"
+        android:textColor="#000000"
+        android:textSize="16sp"
+        android:textStyle="bold"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.498"
+        app:layout_constraintStart_toEndOf="@+id/textTotalAmount"
+        app:layout_constraintTop_toTopOf="@+id/textView3" />
+
+    <Button
+        android:id="@+id/buttonGave"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="You Gave (Rs)"
+        app:layout_constraintEnd_toStartOf="@+id/buttonGot"
+        app:layout_constraintHorizontal_bias="0.399"
+        app:layout_constraintStart_toStartOf="parent"
+        tools:layout_editor_absoluteY="858dp" />
+
+    <Button
+        android:id="@+id/buttonGot"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginEnd="100dp"
+        android:text="You Got (Rs)"
+        app:layout_constraintEnd_toEndOf="parent"
+        tools:layout_editor_absoluteY="858dp" />
+
+    <androidx.recyclerview.widget.RecyclerView
+        android:layout_width="547dp"
+        android:layout_height="683dp"
+        android:layout_marginStart="20dp"
+        android:layout_marginTop="28dp"
+        android:layout_marginEnd="34dp"
+        android:layout_marginBottom="29dp"
+        app:layout_constraintBottom_toTopOf="@+id/buttonGave"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/textTotalAmount" />
+</androidx.constraintlayout.widget.ConstraintLayout>
