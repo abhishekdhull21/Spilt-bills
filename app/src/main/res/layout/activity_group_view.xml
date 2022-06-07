@@ -10,7 +10,6 @@
         android:id="@+id/textView3"
         android:layout_width="109dp"
         android:layout_height="29dp"
-        android:layout_marginTop="44dp"
         android:text="To Each"
         android:textAlignment="center"
         android:textColor="#000000"
@@ -18,78 +17,94 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.498"
         app:layout_constraintStart_toEndOf="@+id/textView2"
-        app:layout_constraintTop_toTopOf="parent" />
+        app:layout_constraintTop_toTopOf="@+id/textView2" />
 
     <TextView
         android:id="@+id/textView2"
         android:layout_width="109dp"
         android:layout_height="29dp"
-        android:layout_marginStart="104dp"
-        android:layout_marginTop="44dp"
+        android:layout_marginStart="32dp"
+        android:layout_marginTop="32dp"
         android:text="Total Amount"
         android:textAlignment="center"
         android:textColor="#000000"
         android:textSize="16sp"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        app:layout_constraintTop_toBottomOf="@+id/txtGroupNameGroupView" />
 
     <TextView
         android:id="@+id/textTotalAmount"
         android:layout_width="109dp"
         android:layout_height="29dp"
-        android:layout_marginStart="104dp"
-        android:layout_marginTop="44dp"
+        android:layout_marginTop="16dp"
         android:text="5000"
         android:textAlignment="center"
         android:textColor="#000000"
         android:textSize="16sp"
         android:textStyle="bold"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="@+id/textView2" />
+        app:layout_constraintStart_toStartOf="@+id/textView2"
+        app:layout_constraintTop_toBottomOf="@+id/textView2" />
 
     <TextView
         android:id="@+id/textAmountToEach"
         android:layout_width="109dp"
         android:layout_height="29dp"
-        android:layout_marginTop="44dp"
         android:text="5000"
         android:textAlignment="center"
         android:textColor="#000000"
         android:textSize="16sp"
         android:textStyle="bold"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.498"
-        app:layout_constraintStart_toEndOf="@+id/textTotalAmount"
-        app:layout_constraintTop_toTopOf="@+id/textView3" />
+        app:layout_constraintEnd_toEndOf="@+id/textView3"
+        app:layout_constraintStart_toStartOf="@+id/textView3"
+        app:layout_constraintTop_toTopOf="@+id/textTotalAmount" />
 
     <Button
         android:id="@+id/buttonGave"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:layout_marginEnd="16dp"
         android:text="You Gave (Rs)"
-        app:layout_constraintEnd_toStartOf="@+id/buttonGot"
-        app:layout_constraintHorizontal_bias="0.399"
-        app:layout_constraintStart_toStartOf="parent"
-        tools:layout_editor_absoluteY="858dp" />
+        app:layout_constraintBottom_toBottomOf="@+id/buttonGot"
+        app:layout_constraintEnd_toEndOf="parent" />
 
     <Button
         android:id="@+id/buttonGot"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginEnd="100dp"
+        android:layout_marginStart="16dp"
+        android:layout_marginBottom="16dp"
         android:text="You Got (Rs)"
-        app:layout_constraintEnd_toEndOf="parent"
-        tools:layout_editor_absoluteY="858dp" />
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintStart_toStartOf="parent" />
 
     <androidx.recyclerview.widget.RecyclerView
-        android:layout_width="547dp"
-        android:layout_height="683dp"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
         android:layout_marginStart="20dp"
         android:layout_marginTop="28dp"
         android:layout_marginEnd="34dp"
-        android:layout_marginBottom="29dp"
-        app:layout_constraintBottom_toTopOf="@+id/buttonGave"
+        android:layout_marginBottom="24dp"
+        app:layout_constraintBottom_toTopOf="@+id/buttonGot"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/textTotalAmount" />
+
+    <TextView
+        android:id="@+id/txtGroupNameGroupView"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="24dp"
+        android:layout_marginTop="16dp"
+        android:autoText="false"
+        android:text="Group Name Here"
+        android:textAlignment="viewStart"
+        android:textAllCaps="true"
+        android:textColor="@color/black"
+        android:textSize="24sp"
+        android:textStyle="bold"
+        app:autoSizeMaxTextSize="24sp"
+        app:autoSizeMinTextSize="16sp"
+        app:autoSizeTextType="uniform"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
 </androidx.constraintlayout.widget.ConstraintLayout>

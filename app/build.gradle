@@ -35,6 +35,7 @@ dependencies {
     implementation 'androidx.constraintlayout:constraintlayout:+'
     implementation 'androidx.browser:browser:1.3.0'
     implementation 'com.google.firebase:firebase-auth:21.0.5'
+    implementation 'com.google.firebase:firebase-firestore:+'
     testImplementation 'junit:junit:4.13.2'
     implementation 'com.google.android.gms:play-services-safetynet:18.0.1'
 

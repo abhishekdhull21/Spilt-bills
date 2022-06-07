@@ -1,5 +1,8 @@
 package com.asdhull.splitbills.adapters;
 
+import android.app.Activity;
+import android.content.Intent;
+import android.os.Parcelable;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -8,6 +11,7 @@ import android.widget.TextView;
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
+import com.asdhull.splitbills.GroupView;
 import com.asdhull.splitbills.R;
 import com.asdhull.splitbills.modals.GroupsNameModal;
 
@@ -15,9 +19,10 @@ import java.util.ArrayList;
 
 public class GroupNames extends  RecyclerView.Adapter<GroupNames.ViewHolder> {
     private ArrayList<GroupsNameModal> list;
-
-    public GroupNames(ArrayList<GroupsNameModal> list) {
+    private final Activity context;
+    public GroupNames(Activity context, ArrayList<GroupsNameModal> list) {
         this.list = list;
+        this.context = context;
     }
 
     @NonNull
@@ -33,6 +38,15 @@ public class GroupNames extends  RecyclerView.Adapter<GroupNames.ViewHolder> {
     GroupsNameModal modal = list.get(position) ;
     holder.TextViewGroupName.setText(modal.getGroupName());
     holder.TextViewPCount.setText(modal.getPCount());
+
+    holder.TextViewGroupName.setOnClickListener(new View.OnClickListener() {
+        @Override
+        public void onClick(View view) {
+            Intent i = new Intent(context, GroupView.class);
+            i.putExtra("group",  list.get(position));
+                context.startActivity(i);
+        }
+    });
     }
 
     @Override

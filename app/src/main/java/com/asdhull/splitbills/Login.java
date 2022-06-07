@@ -12,7 +12,10 @@ import android.widget.Button;
 import android.widget.EditText;
 import android.widget.Toast;
 
+import com.asdhull.splitbills.modals.User;
 import com.google.android.gms.tasks.OnCompleteListener;
+import com.google.android.gms.tasks.OnFailureListener;
+import com.google.android.gms.tasks.OnSuccessListener;
 import com.google.android.gms.tasks.Task;
 import com.google.firebase.FirebaseException;
 import com.google.firebase.auth.AuthResult;
@@ -20,6 +23,9 @@ import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.PhoneAuthCredential;
 import com.google.firebase.auth.PhoneAuthOptions;
 import com.google.firebase.auth.PhoneAuthProvider;
+import com.google.firebase.firestore.CollectionReference;
+import com.google.firebase.firestore.DocumentReference;
+import com.google.firebase.firestore.FirebaseFirestore;
 
 import java.util.concurrent.TimeUnit;
 
@@ -28,6 +34,8 @@ public class Login extends AppCompatActivity {
     private EditText edtPhone, edtOTP;
     private String verificationId;
     private Button verifyOTPBtn, generateOTPBtn;
+    private FirebaseFirestore db;
+    private String phone;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -35,6 +43,7 @@ public class Login extends AppCompatActivity {
         setContentView(R.layout.activity_login);
         // of our FirebaseAuth.
         mAuth = FirebaseAuth.getInstance();
+        db = FirebaseFirestore.getInstance();
 
         // initializing variables for button and Edittext.
         edtPhone = findViewById(R.id.idEdtPhoneNumber);
@@ -55,7 +64,7 @@ public class Login extends AppCompatActivity {
                 } else {
                     // if the text field is not empty we are calling our
                     // send OTP method for getting OTP from Firebase.
-                    String phone = "+91" + edtPhone.getText().toString();
+                     phone = "+91" + edtPhone.getText().toString();
                     sendVerificationCode(phone);
                 }
             }
@@ -90,9 +99,7 @@ public class Login extends AppCompatActivity {
                         if (task.isSuccessful()) {
                             // if the code is correct and the task is successful
                             // we are sending our user to new activity.
-                            Intent i = new Intent(Login.this, MainActivity.class);
-                            startActivity(i);
-                            finish();
+                         saveToFireStore(mAuth.getUid());
                         } else {
                             // if the code is not correct then we are
                             // displaying an error message to the user.
@@ -177,5 +184,39 @@ public class Login extends AppCompatActivity {
         // after getting credential we are
         // calling sign in method.
         signInWithCredential(credential);
+
+//        saveToFireStore(mAuth.getUid());
+    }
+
+    private void saveToFireStore(String uid){
+
+        // creating a collection reference
+        // for our Firebase Firetore database.
+        CollectionReference dbUsers = db.collection("users");
+
+        // adding our data to our courses object class.
+        User user = new User(uid);
+        user.setPhone(phone);
+
+        // below method is use to add data to Firebase Firestore.
+        dbUsers.add(user).addOnSuccessListener(new OnSuccessListener<DocumentReference>() {
+            @Override
+            public void onSuccess(DocumentReference documentReference) {
+                // after the data addition is successful
+                // we are displaying a success toast message.
+//                Toast.makeText(MainActivity.this, "Your Course has been added to Firebase Firestore", Toast.LENGTH_SHORT).show();
+                Intent i = new Intent(Login.this, MainActivity.class);
+                startActivity(i);
+                finish();
+            }
+        }).addOnFailureListener(new OnFailureListener() {
+            @Override
+            public void onFailure(@NonNull Exception e) {
+                // this method is called when the data addition process is failed.
+                // displaying a toast message when data addition is failed.
+                Toast.makeText(Login.this, "Fail to proceed \n" + e, Toast.LENGTH_SHORT).show();
+            }
+        });
+
     }
 }
